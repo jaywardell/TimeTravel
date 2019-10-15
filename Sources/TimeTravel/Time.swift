@@ -17,7 +17,7 @@ public class Time {
     
     public typealias timeTravelBlock = () throws ->()
     
-    /// returnswhat the Time class considers  the current date and time
+    /// returns what the Time class considers  the current date and time
     ///
     /// This will usually be the same as calling Date(),
     /// but could be a different time if it's called inside a timeTravelBlock
@@ -52,5 +52,4 @@ public class Time {
         
         travel(to: Date().addingTimeInterval(-timeinterval), block: block)
     }
-
 }
