@@ -24,11 +24,22 @@ class TimeTests: XCTestCase {
         print("The time right now:")
         print(Time.now()) // prints the current time
 
-        Time.travel(forward:60 * 60) {
-            print("The time an hour from now:")
-            print(Time.now()) // prints the time an hour in the future
+        Time.travel(forward:60) {
+            print("The time a minute from now:")
+            print(Time.now()) // prints the time a minute in the future
+            
+            Time.travel(forward:60 * 60) {
+                print("The time an hour from now:")
+                print(Time.now()) // prints the time an hour in the future
+            }
+            
+            print("The time a minute from now again:")
+            print(Time.now()) // prints the time a minute in the future
         }
         
+        print("The time right now:")
+        print(Time.now()) // prints the current time
+
         print()
     }
 

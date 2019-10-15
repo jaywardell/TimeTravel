@@ -7,7 +7,7 @@ let package = Package(
     name: "TimeTravel",
 
     platforms: [
-        .macOS(.v10_15), .iOS(.v11), .tvOS(.v11), // TODO: watchOS
+        .macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .watchOS(.v6)
     ],
 
     products: [
