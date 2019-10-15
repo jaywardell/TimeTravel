@@ -31,14 +31,13 @@ public class Time {
     /// Note that this method catches errors and doesn't rethrow them, so you should put any error handling code within the block rather than outside it
     public static func travel(to date:Date, block:@escaping timeTravelBlock) {
         timeStack.append(date)
-        
-        defer { timeStack.removeLast() } 
+        defer { timeStack.removeLast() }
         
         do {
           try block()
         }
         catch {
-            // noop, we don't worry about
+            // noop, let the caller handle any errors in the timeTravelBlock
         }
     }
     
