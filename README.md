@@ -3,14 +3,26 @@
 Use this package to test Swift code that is time dependent, like caching or scheduling code.
 
 ## Usage
+
 ### Step 1:
-In your time-dependent production code, use Time.now() instead of Date()
-In most cases, Time.now() returns the same thing as Date()
+// TODO: explain importing into XCode project
 
 ### Step 2:
-In your test code, when you need to see what would happen if the code were run at a different time, wrap the code in one of the Time.travel() methods.  Any call to Time.now() inside a time travel block will return the date and time passed into the block instead of the current date and time.
+Import TimeTravel into any Swift file that contains time-dependent production code
 
-TimeTravel maintains a stack of calls to Time.travel(), so if you nest one call within another, you can be assured of the proper behavior.
+    import TimeTravel
+    
+### Step 3:
+In your time-dependent production code, use `Time.now()` instead of `Date()`
+In most cases, Time.now() returns the same thing as Date()
+
+### Step 4:
+In your test code, when you need to see what would happen if the code were run at a different time, wrap the code in one of the `Time.travel()` methods.  Any call to `Time.now()` inside a time travel block will return the date and time passed into the block instead of the current date and time.
+
+TimeTravel maintains a stack of calls to `Time.travel()`, so if you nest one call within another, you can be assured of the proper behavior.
+
+NOTE: `Time.travel()` will catch errors and not rethrow them, so you should perform any error catchign code within the time travel block.
+
 
 
 ## Trivial Example Usage
