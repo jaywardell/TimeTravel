@@ -15,7 +15,7 @@ public class Time {
     
     private static var nominalTime : Date?
 
-    public typealias timeTravelBlock = ()->()
+    public typealias timeTravelBlock = () throws ->()
     
     /// returns the current date and time as the Time class considers it
     ///
@@ -29,8 +29,14 @@ public class Time {
     /// Any calls to now() within the timeTravelBlock will report now() to be the date passed in
     public static func travel(to date:Date, block:@escaping timeTravelBlock) {
         nominalTime = date
-        block()
-        nominalTime = nil
+        defer { nominalTime = nil }
+        
+        do {
+          try block()
+        }
+        catch {
+//            throw error
+        }
     }
     
     /// Any calls to now() within the timeTravelBlock will report now() to be  timeinterval seconds after the current Date()

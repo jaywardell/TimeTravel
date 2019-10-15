@@ -94,5 +94,19 @@ class TimeTests: XCTestCase {
 
     }
 
+    func testTimeTravelWorksWithThrowingFunctions() {
+        
+        func alwaysThrows() throws {
+            enum AlwaysThrown : Error { case always }
+            throw AlwaysThrown.always
+        }
+        
+        // Time.travel() will catch any thrown errors but ignores the error
+        // put any error-catching code inside your time travel block
+        Time.travel(to: Date()) {
+            XCTAssertThrowsError(try alwaysThrows())
+        }
+        
+    }
 
 }
