@@ -1,6 +1,6 @@
 # TimeTravel
 
-Use this package to test Swift code that is time dependent, like caching or scheduling code.
+Use this package to test Swift code that is time-dependent, like caching or scheduling code.
 
 ## Usage
 
@@ -19,10 +19,20 @@ In most cases, Time.now() returns the same thing as Date()
 ### Step 4:
 In your test code, when you need to see what would happen if the code were run at a different time, wrap the code in one of the `Time.travel()` methods.  Any call to `Time.now()` inside a time travel block will return the date and time passed into the block instead of the current date and time.
 
+The available Time.travel() methods are:
+
+    /// Any calls to now() within the timeTravelBlock will report now() to be the date passed in
+    public static func travel(to date:Date, block:@escaping timeTravelBlock)
+
+    /// Any calls to now() within the timeTravelBlock will report now() to be timeinterval seconds after the current Date()
+    public static func travel(forward timeinterval:TimeInterval, block:@escaping timeTravelBlock)
+
+    /// Any calls to now() within the timeTravelBlock will report now() to be timeinterval seconds before the current Date()
+    public static func travel(backward timeinterval:TimeInterval, block:@escaping timeTravelBlock)
+
 TimeTravel maintains a stack of calls to `Time.travel()`, so if you nest one call within another, you can be assured of the proper behavior.
 
 NOTE: `Time.travel()` will catch errors and not rethrow them, so you should perform any error catchign code within the time travel block.
-
 
 
 ## Trivial Example Usage
@@ -67,3 +77,4 @@ Use this to test code that is time-dependent, like caching or scheduling code
 // TODO: a simple example of a timed cache and some test cases
 
 // TODO: Publish this
+https://developer.apple.com/documentation/xcode/publishing_a_swift_package_with_xcode
