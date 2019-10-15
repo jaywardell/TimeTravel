@@ -7,7 +7,7 @@ In your time-dependent code, use Time.now() instead of Date()
 In most cases, Time.now() returns the same thing as Date()
 
 ## Step 2:
-In your test code, when you need to see what would happen if the code were run at a different time, wrap the code in one of the Time.travel() {} methods.  Any call to TIme.now() inside a time travel block will return the date passed into the block instead of the current time.
+In your test code, when you need to see what would happen if the code were run at a different time, wrap the code in one of the Time.travel() methods.  Any call to TIme.now() inside a time travel block will return the date passed into the block instead of the current time.
 
 
 ## Trivial Example Usage
@@ -47,7 +47,7 @@ will output
 ... or something like it at the time that you run it...
 
 ## Real Life Usage
-Use this to test code that is time-dependent, like caching scheduling code
+Use this to test code that is time-dependent, like caching or scheduling code
 
 
 // TODO: Publish this
