@@ -47,7 +47,7 @@ will output
     The time right now:
     2019-10-15 16:35:45 +0000
 
-... or something like it at the time that you run it...
+... or something similar at the time that you run it...
 
 ## Real Life Usage
 Use this to test code that is time-dependent, like caching or scheduling code
