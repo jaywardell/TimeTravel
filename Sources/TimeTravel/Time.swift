@@ -13,28 +13,24 @@ import Foundation
 /// by offering a globally available now() method that returns a settable time within a given context, but returns the real system time most of the time,
 public class Time {
     
-//    private static var nominalTime : Date?
-
     private static var timeStack = [Date]()
     
     public typealias timeTravelBlock = () throws ->()
     
-    /// returns the current date and time as the Time class considers it
+    /// returnswhat the Time class considers  the current date and time
     ///
     /// This will usually be the same as calling Date(),
-    /// but could be a different time if inside a timeTravelBlock
+    /// but could be a different time if it's called inside a timeTravelBlock
     public static func now() -> Date {
-//        return nominalTime ?? Date()
         timeStack.last ?? Date()
     }
     
     
     /// Any calls to now() within the timeTravelBlock will report now() to be the date passed in
+    ///
+    /// Note that this method catches errors and doesn't rethrow them, so you should put any error handling code within the block rather than outside it
     public static func travel(to date:Date, block:@escaping timeTravelBlock) {
-//        nominalTime = date
         timeStack.append(date)
-        
-//        defer { nominalTime = nil }
         
         defer { timeStack.removeLast() } 
         
@@ -42,7 +38,7 @@ public class Time {
           try block()
         }
         catch {
-//            throw error
+            // noop, we don't worry about
         }
     }
     
