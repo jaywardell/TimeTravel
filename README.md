@@ -2,12 +2,15 @@
 
 Use this package to test Swift code that is time dependent, like caching or scheduling code.
 
-## Step 1:
-In your time-dependent code, use Time.now() instead of Date()
+## Usage
+### Step 1:
+In your time-dependent production code, use Time.now() instead of Date()
 In most cases, Time.now() returns the same thing as Date()
 
-## Step 2:
-In your test code, when you need to see what would happen if the code were run at a different time, wrap the code in one of the Time.travel() methods.  Any call to TIme.now() inside a time travel block will return the date passed into the block instead of the current time.
+### Step 2:
+In your test code, when you need to see what would happen if the code were run at a different time, wrap the code in one of the Time.travel() methods.  Any call to Time.now() inside a time travel block will return the date and time passed into the block instead of the current date and time.
+
+TimeTravel maintains a stack of calls to Time.travel(), so if you nest one call within another, you can be assured of the proper behavior.
 
 
 ## Trivial Example Usage
@@ -49,5 +52,6 @@ will output
 ## Real Life Usage
 Use this to test code that is time-dependent, like caching or scheduling code
 
+// TODO: a simple example of a timed cache and some test cases
 
 // TODO: Publish this
