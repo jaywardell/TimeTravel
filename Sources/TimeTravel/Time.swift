@@ -13,8 +13,10 @@ import Foundation
 /// by offering a globally available now() method that returns a settable time within a given context, but returns the real system time most of the time,
 public class Time {
     
-    private static var nominalTime : Date?
+//    private static var nominalTime : Date?
 
+    private static var timeStack = [Date]()
+    
     public typealias timeTravelBlock = () throws ->()
     
     /// returns the current date and time as the Time class considers it
@@ -22,14 +24,19 @@ public class Time {
     /// This will usually be the same as calling Date(),
     /// but could be a different time if inside a timeTravelBlock
     public static func now() -> Date {
-        return nominalTime ?? Date()
+//        return nominalTime ?? Date()
+        timeStack.last ?? Date()
     }
     
     
     /// Any calls to now() within the timeTravelBlock will report now() to be the date passed in
     public static func travel(to date:Date, block:@escaping timeTravelBlock) {
-        nominalTime = date
-        defer { nominalTime = nil }
+//        nominalTime = date
+        timeStack.append(date)
+        
+//        defer { nominalTime = nil }
+        
+        defer { timeStack.removeLast() } 
         
         do {
           try block()

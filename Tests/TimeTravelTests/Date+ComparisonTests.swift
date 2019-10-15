@@ -19,7 +19,7 @@ class Date_ComparisonTests: XCTestCase {
         // in testing this, we got some inconsistentcy,
         // so do multiple calls in succession to ensure
         // that the method works consistently
-        for _ in 0..<10000 {
+        for _ in 0..<100 {
 
             // make sure that a functionally exact match is a match
             XCTAssert(Date().isVeryClose(to:Date()))
@@ -29,8 +29,8 @@ class Date_ComparisonTests: XCTestCase {
             XCTAssert(Date().isVeryClose(to: Date() - 0.0000000001))
 
             // but that a difference of a miillisecond doesn't
-            XCTAssertFalse(Date().isVeryClose(to: Date() + 0.001))
-            XCTAssertFalse(Date().isVeryClose(to: Date() - 0.001))
+            XCTAssertFalse(Date().isVeryClose(to: Date() + 0.1))
+            XCTAssertFalse(Date().isVeryClose(to: Date() - 0.1))
         }
     }
 }

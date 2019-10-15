@@ -29,7 +29,7 @@ internal extension Date {
         // false positives
         // at least on a testing environment
         // on a 2014 MacBook AIR running Catalina as of 10/15/2019
-        let epsilon : TimeInterval = 0.0001
+        let epsilon : TimeInterval = 0.01
         return abs(self.distance(to: otherDate)) < epsilon
     }
 }

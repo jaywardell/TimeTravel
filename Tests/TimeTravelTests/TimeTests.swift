@@ -106,7 +106,26 @@ class TimeTests: XCTestCase {
         Time.travel(to: Date()) {
             XCTAssertThrowsError(try alwaysThrows())
         }
-        
     }
 
+    func testTimeTravelStack() {
+        
+        let d = Date()
+        let m = d + 60
+        let h = d + 60 * 60
+        
+        Time.travel(to:m) {
+            XCTAssertEqual(Time.now(), m)
+            
+            Time.travel(to:h) {
+                XCTAssertEqual(Time.now(), h)
+            }
+            // make sure that is got set back to one minute ahead
+            XCTAssertEqual(Time.now(), m)
+        }
+        // make sure that is got set back to now
+        XCTAssert(Time.now().isVeryClose(to: d))
+
+    }
+    
 }
