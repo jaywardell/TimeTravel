@@ -88,3 +88,9 @@ TimeTravel has only been tested against Swift 5.1 and XCode 11.  It may work wit
 
 ## License (of sorts)
 TimeTravel is free to use or modify in any way you see fit.  If you have an idea for an improvement, please submit a pull request.
+
+
+## Contact
+
+twitter: [@jaywardell](https://twitter.com/jaywardell)
+
