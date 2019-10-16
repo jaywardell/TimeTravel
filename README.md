@@ -5,7 +5,7 @@ Use this package to test Swift code that is time-dependent, like caching or sche
 ## Usage
 
 ### Step 1:
-// TODO: explain importing into XCode project
+TimeTravel is available as a Swift Package at https://github.com/jaywardell/TimeTravel.  You can downlaod it or import it in XCode using `File->Swift Packages->Add Package Dependency`
 
 ### Step 2:
 Import TimeTravel into any Swift file that contains time-dependent production code
@@ -24,10 +24,10 @@ The available `Time.travel()` methods are:
     /// Any calls to now() within the timeTravelBlock will report now() to be the date passed in
     public static func travel(to date:Date, block:@escaping timeTravelBlock)
 
-    /// Any calls to now() within the timeTravelBlock will report now() to be timeinterval seconds after the current Date()
+    /// Any calls to now() within the timeTravelBlock will report now() to be timeinterval seconds after the current Time.now()
     public static func travel(forward timeinterval:TimeInterval, block:@escaping timeTravelBlock)
 
-    /// Any calls to now() within the timeTravelBlock will report now() to be timeinterval seconds before the current Date()
+    /// Any calls to now() within the timeTravelBlock will report now() to be timeinterval seconds before the current Time.now()
     public static func travel(backward timeinterval:TimeInterval, block:@escaping timeTravelBlock)
 
 TimeTravel maintains a stack of calls to `Time.travel()`, so if you nest one call within another, you can be assured of the proper behavior.
@@ -76,5 +76,8 @@ Use this to test code that is time-dependent, like caching or scheduling code
 
 // TODO: a simple example of a timed cache and some test cases
 
-// TODO: Publish this
-https://developer.apple.com/documentation/xcode/publishing_a_swift_package_with_xcode
+## Requirements
+TimeTravel has only been tested against Swift 5.1 and XCode 11.  It may work with some previous versions of swift.
+
+## License (of sorts)
+TimeTravel is free to use or modify in any way you see fit.  If you have an idea for an improvement, please submit a pull request.
