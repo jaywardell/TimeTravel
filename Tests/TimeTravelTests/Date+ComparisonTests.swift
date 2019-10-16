@@ -1,9 +1,8 @@
 //
 //  Date+ComparisonTests.swift
-//  TimeTestsTests
+//  TimeTravel
 //
 //  Created by Joseph A. Wardell on 10/15/19.
-//  Copyright © 2019 Joseph A. Wardell. All rights reserved.
 //
 
 import XCTest
