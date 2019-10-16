@@ -41,15 +41,15 @@ public class Time {
         }
     }
     
-    /// Any calls to now() within the timeTravelBlock will report now() to be timeinterval seconds after the current Date()
+    /// Any calls to now() within the timeTravelBlock will report now() to be timeinterval seconds after the current Time.now()
     public static func travel(forward timeinterval:TimeInterval, block:@escaping timeTravelBlock) {
         
-        travel(to: Date().addingTimeInterval(timeinterval), block: block)
+        travel(to: Time.now().addingTimeInterval(timeinterval), block: block)
     }
 
-    /// Any calls to now() within the timeTravelBlock will report now() to be timeinterval seconds before the current Date()
+    /// Any calls to now() within the timeTravelBlock will report now() to be timeinterval seconds before the current Time.now()
     public static func travel(backward timeinterval:TimeInterval, block:@escaping timeTravelBlock) {
         
-        travel(to: Date().addingTimeInterval(-timeinterval), block: block)
+        travel(to: Time.now().addingTimeInterval(-timeinterval), block: block)
     }
 }

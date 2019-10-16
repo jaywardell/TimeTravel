@@ -14,12 +14,12 @@ Import TimeTravel into any Swift file that contains time-dependent production co
     
 ### Step 3:
 In your time-dependent production code, use `Time.now()` instead of `Date()`
-In most cases, Time.now() returns the same thing as Date()
+In most cases, `Time.now()` returns the same thing as `Date()`
 
 ### Step 4:
 In your test code, when you need to see what would happen if the code were run at a different time, wrap the code in one of the `Time.travel()` methods.  Any call to `Time.now()` inside a time travel block will return the date and time passed into the block instead of the current date and time.
 
-The available Time.travel() methods are:
+The available `Time.travel()` methods are:
 
     /// Any calls to now() within the timeTravelBlock will report now() to be the date passed in
     public static func travel(to date:Date, block:@escaping timeTravelBlock)
@@ -32,7 +32,7 @@ The available Time.travel() methods are:
 
 TimeTravel maintains a stack of calls to `Time.travel()`, so if you nest one call within another, you can be assured of the proper behavior.
 
-NOTE: `Time.travel()` will catch errors and not rethrow them, so you should perform any error catchign code within the time travel block.
+NOTE: `Time.travel()` will catch errors and not rethrow them, so you should perform any error handling code within the time travel block.
 
 
 ## Trivial Example Usage

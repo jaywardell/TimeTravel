@@ -136,7 +136,23 @@ class TimeTests: XCTestCase {
         }
         // make sure that is got set back to now
         XCTAssert(Time.now().isVeryClose(to: d))
+    }
 
+    func testTimeTravelForwardTwice() {
+        
+        let d = Date()
+        let m = d + 60
+        let handm = d + 60 * 60 + 60
+
+        Time.travel(forward: 60) {
+            XCTAssert(Time.now().isVeryClose(to:m))
+
+            // should not move forward an hour from d, but rather an hour and one minute from d
+            Time.travel(forward: 60 * 60) {
+                XCTAssert(Time.now().isVeryClose(to:handm))
+            }
+        }
+        
     }
     
 }
