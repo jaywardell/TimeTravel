@@ -5,18 +5,25 @@ Use this package to test Swift code that is time-dependent, like caching or sche
 ## Usage
 
 ### Step 1:
-TimeTravel is available as a Swift Package at https://github.com/jaywardell/TimeTravel.  You can downlaod it or import it in XCode using `File->Swift Packages->Add Package Dependency`
+
+Import TimeTravel into your project.
+
+TimeTravel is available as a Swift Package at https://github.com/jaywardell/TimeTravel.  
+You can downlaod it or import it in XCode using `File->Swift Packages->Add Package Dependency…`
 
 ### Step 2:
+
 Import TimeTravel into any Swift file that contains time-dependent production code
 
     import TimeTravel
     
 ### Step 3:
+
 In your time-dependent production code, use `Time.now()` instead of `Date()`
 In most cases, `Time.now()` returns the same thing as `Date()`
 
 ### Step 4:
+
 In your test code, when you need to see what would happen if the code were run at a different time, wrap the code in one of the `Time.travel()` methods.  Any call to `Time.now()` inside a time travel block will return the date and time passed into the block instead of the current date and time.
 
 The available `Time.travel()` methods are:
