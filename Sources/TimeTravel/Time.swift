@@ -51,4 +51,6 @@ public class Time {
         
         travel(to: Time.now().addingTimeInterval(-timeinterval), block: block)
     }
+    
+    // TODO: add methods for time travelling using DateComponents as well
 }
